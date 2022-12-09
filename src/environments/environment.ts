@@ -5,17 +5,17 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyD8IcSjLo2QrBM1YO7AeYgD3BVoPetK7jY",
-    authDomain: "e-commerce-ebf06.firebaseapp.com",
-    databaseURL: "https://e-commerce-ebf06-default-rtdb.firebaseio.com",
-    projectId: "e-commerce-ebf06",
-    storageBucket: "e-commerce-ebf06.appspot.com",
-    messagingSenderId: "637842488757",
-    appId: "1:637842488757:web:004d513771232d5f502dfc"
+    apiKey: "#####",
+    authDomain: "#####",
+    databaseURL: "#####",
+    projectId: "#####",
+    storageBucket: "#####",
+    messagingSenderId: "#####",
+    appId: "#####"
   },
-  signUpUrl: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD8IcSjLo2QrBM1YO7AeYgD3BVoPetK7jY',
-  signInUrl: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD8IcSjLo2QrBM1YO7AeYgD3BVoPetK7jY',
-  updatePwdUrl: 'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyD8IcSjLo2QrBM1YO7AeYgD3BVoPetK7jY'
+  signUpUrl: 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=#####',
+  signInUrl: 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key==#####',
+  updatePwdUrl: 'https://identitytoolkit.googleapis.com/v1/accounts:update?key==#####'
 };
 
 /*
