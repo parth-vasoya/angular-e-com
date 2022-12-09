@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <h2 class="p-3 text-center">{{productId ? 'Edit Product' : 'Add Product'}}</h2>
+  <form [formGroup]="productForm" (ngSubmit)="productId ? updateProduct() : addProduct()">
+    <div class="form-group row pb-3">
+      <label for="name" class="col-2 control-label text-end">Name</label>
+      <div class="col-8">
+        <input type="text" id="name" class="form-control" formControlName="name">
+        <div class="text-danger" *ngIf="f.name.errors?.required && f.name.touched">Name is required</div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="description" class="col-2 control-label text-end">Description</label>
+      <div class="col-8">
+        <input type="text" id="description" class="form-control" formControlName="description">
+        <div class="text-danger" *ngIf="f.description.errors?.required && f.description.touched">Description is required</div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="stock" class="col-2 control-label text-end">Stock</label>
+      <div class="col-8">
+        <input type="text" id="stock" class="form-control" formControlName="stock">
+        <div class="text-danger" *ngIf="f.stock.touched">
+          <span *ngIf="f.stock.errors?.required">Stock is required</span>
+          <span *ngIf="f.stock.errors?.pattern">Please enter only numbers</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="price" class="col-2 control-label text-end">Price</label>
+      <div class="col-8">
+        <input type="text" id="price" class="form-control" formControlName="price">
+        <div class="text-danger" *ngIf="f.price.touched">
+          <span *ngIf="f.price.errors?.required">Price is required</span>
+          <span *ngIf="f.price.errors?.pattern">Please enter only numbers</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="image" class="col-2 control-label text-end">Image</label>
+      <div class="col-8">
+        <input type="file" id="image" class="form-control" formControlName="image" (change)="uploadImg($event)">
+        <div class="progress mt-2">
+          <div class="progress-bar progress-bar-info" role="progressbar" attr.aria-valuenow="{{ percentage }}"
+               aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: percentage + '%' }">
+            {{ percentage }}%
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <div class="col-10 text-end">
+        <button class="btn btn-primary" [disabled]="productForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

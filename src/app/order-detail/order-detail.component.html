@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h2 class="text-center">Order Details</h2>
+  <div *ngIf="order">
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">quantity</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="!order.items">
+        <td colspan="4">No Products found</td>
+      </tr>
+      <tr *ngFor="let product of order.items; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{product.quantity}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="text-end pe-5">
+      <p class="">Total amount: ₹{{order.total}}</p>
+      <button (click)="deleteOrder()" class="btn btn-danger">Delete Order</button>
+    </div>
+  </div>
+</div>
+

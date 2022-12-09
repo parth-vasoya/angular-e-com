@@ -1,0 +1,30 @@
+<div class="container grid-container">
+  <div class="mt-5">
+    <div class="card">
+      <div class="row" *ngIf="product">
+        <div class="col-4">
+          <img class="card-img-top" [src]="product.image" *ngIf="product.image" alt="Card image cap">
+        </div>
+        <div class="col-6">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">Description: {{product.description}}</p>
+          <p class="">Price: ₹{{product.price}}</p>
+          <p class="">Stock:  <span>{{product.stock}}</span></p>
+          <div *ngIf="authUser.idToken">
+            <div class="form-group row">
+              <label class="col-3 control-label">Quantity:</label>
+              <div class="col-3">
+                <select name="quantity" #quantity class="form-select">
+                  <option value="{{n}}" *ngFor="let n of [] | range:product.stock">{{n}}</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-outline-dark mt-3" *ngIf="authUser.idToken" (click)="addCart(quantity.value)">Add to Cart</button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <h2 class="p-3 text-center">{{userId ? 'Edit User' : 'Add User'}}</h2>
+  <form [formGroup]="userForm" (ngSubmit)="userId ? updateUser() : addUser()">
+    <div class="form-group row pb-3">
+      <label for="name" class="col-2 control-label text-end">Name</label>
+      <div class="col-8">
+        <input type="text" id="name" class="form-control" formControlName="name">
+        <div class="text-danger" *ngIf="f.name.touched">
+          <span *ngIf="f.name.errors?.required">Name is required</span>
+          <span *ngIf="f.name.errors?.pattern">Number not allowed</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="email" class="col-2 control-label text-end">Email</label>
+      <div class="col-8">
+        <input type="text" id="email" class="form-control" formControlName="email">
+        <div class="text-danger" *ngIf="f.email.touched">
+          <div *ngIf="f.email.errors?.required">Email is required</div>
+          <div *ngIf="f.email.errors?.email">Email is not valid</div>
+        </div>
+      </div>
+    </div>
+    <div formGroupName="passwordValidation" *ngIf="!userId">
+    <div class="form-group row pb-3">
+      <label for="password" class="col-2 control-label text-end">Password</label>
+      <div class="col-8">
+        <input type="password" id="password" class="form-control" formControlName="password">
+        <div class="text-danger" *ngIf="userForm.get('passwordValidation.password')?.touched">
+          <div *ngIf="userForm.get('passwordValidation.password')?.errors?.required">Password is required</div>
+          <div *ngIf="userForm.get('passwordValidation.password')?.errors?.required">Password can not be less than 6</div>
+          <div *ngIf="userForm.get('passwordValidation.password')?.errors?.pattern">Password must contain 1 special character</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="confirm_password" class="col-2 control-label text-end">Confirm Password</label>
+      <div class="col-8">
+        <input type="text" id="confirm_password" class="form-control" formControlName="confirm_password">
+        <div class="text-danger" *ngIf="f.passwordValidation.errors?.error">Password not match</div>
+      </div>
+    </div>
+    </div>
+    <div class="form-group row mb-3">
+      <label for="role" class="col-2 col-form-label text-end">Role</label>
+      <div class="col-8">
+        <select class="form-select" id="role" formControlName="role">
+          <option value="" disabled selected>Please select any role</option>
+          <option [value]="role" *ngFor="let role of roles">{{role}}</option>
+        </select>
+        <div class="text-danger" *ngIf="f.role.touched">
+          <span *ngIf="f.role.errors?.required">Role is required</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <label for="dob" class="col-2 control-label text-end">DOB</label>
+      <div class="col-8">
+        <input type="date" id="dob" class="form-control" formControlName="dob">
+        <div class="text-danger" *ngIf="f.dob.errors?.error">DOB can not be future date</div>
+      </div>
+    </div>
+    <div class="form-group row pb-3">
+      <div class="col-10 text-end">
+        <button class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

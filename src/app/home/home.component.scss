@@ -1,0 +1,11 @@
+.card-img-top {
+  height: 300px
+}
+
+.product-desc {
+  display: inline-block;
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
